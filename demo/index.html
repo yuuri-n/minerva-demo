@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Minerva Demo - ホーム</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="sf-header">
+  <a href="index.html" class="logo">⚡ Minerva CRM</a>
+  <nav>
+    <a href="index.html" class="active">ホーム</a>
+    <a href="leads.html">架電リスト</a>
+    <a href="screen_list.html">画面一覧</a>
+  </nav>
+</header>
+
+<div class="sf-page">
+  <div class="page-header">
+    <div>
+      <div class="page-title">ホームダッシュボード</div>
+    </div>
+  </div>
+
+  <!-- Metrics -->
+  <div class="metrics-row" id="metrics"></div>
+
+  <div class="two-col">
+    <!-- Opportunities -->
+    <div>
+      <div class="sf-card">
+        <div class="sf-card-header">
+          <span class="sf-card-title">📋 商談一覧</span>
+          <a href="leads.html" class="btn btn-primary btn-sm">架電リストへ</a>
+        </div>
+        <div class="sf-card-body" style="padding:0">
+          <table class="sf-table" id="opp-table"></table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cases -->
+    <div>
+      <div class="sf-card">
+        <div class="sf-card-header">
+          <span class="sf-card-title">🎫 ケース一覧</span>
+        </div>
+        <div class="sf-card-body" style="padding:0">
+          <table class="sf-table" id="case-table"></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="reset-btn" onclick="resetData(); location.reload();">🔄 データリセット</button>
+
+<script src="data.js"></script>
+<script>
+  const data = getData();
+
+  // Metrics
+  const opps = data.opportunities;
+  const acts = data.activities;
+  document.getElementById('metrics').innerHTML = `
+    <div class="metric-card">
+      <div class="metric-label">商談総数</div>
+      <div class="metric-value">${opps.length}</div>
+      <div class="metric-sub">件</div>
+    </div>
+    <div class="metric-card orange">
+      <div class="metric-label">架電待ち</div>
+      <div class="metric-value">${opps.filter(o => o.callStatus === '未架電' || o.callStatus === '不通' || o.callStatus === '折り返し待ち').length}</div>
+      <div class="metric-sub">件</div>
+    </div>
+    <div class="metric-card green">
+      <div class="metric-label">アポ確定</div>
+      <div class="metric-value">${opps.filter(o => o.callStatus === 'アポ確定').length}</div>
+      <div class="metric-sub">件</div>
+    </div>
+    <div class="metric-card red">
+      <div class="metric-label">活動記録</div>
+      <div class="metric-value">${acts.length}</div>
+      <div class="metric-sub">件（今セッション）</div>
+    </div>
+  `;
+
+  // Opportunities table
+  document.getElementById('opp-table').innerHTML = `
+    <thead>
+      <tr>
+        <th>商談名</th>
+        <th>会社名</th>
+        <th>ステージ</th>
+        <th>最新ステータス</th>
+        <th>次アクション</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${opps.map(o => {
+        const acc = getAccount(o.accountId);
+        return `<tr>
+          <td><a href="opportunity.html?id=${o.id}">${o.name}</a></td>
+          <td>${acc.name}</td>
+          <td><span class="badge" style="background:${stageColor(o.stage)}">${o.stage}</span></td>
+          <td><span class="badge" style="background:${callStatusBadge(o.callStatus)}">${o.callStatus}</span></td>
+          <td style="font-size:12px">${o.nextActionNote}<br><span style="color:#706e6b">${formatDate(o.nextActionAt)}</span></td>
+        </tr>`;
+      }).join('')}
+    </tbody>
+  `;
+
+  // Cases table
+  const statusClass = { 'オープン': 'case-open', '対応中': 'case-inprog', 'クローズ': 'case-closed' };
+  document.getElementById('case-table').innerHTML = `
+    <thead>
+      <tr><th>件名</th><th>会社名</th><th>ステータス</th></tr>
+    </thead>
+    <tbody>
+      ${data.cases.map(c => {
+        const acc = getAccount(c.accountId);
+        return `<tr>
+          <td><a href="case.html?id=${c.id}">${c.subject}</a></td>
+          <td style="font-size:12px">${acc.name}</td>
+          <td><span class="badge ${statusClass[c.status] || ''}">${c.status}</span></td>
+        </tr>`;
+      }).join('')}
+    </tbody>
+  `;
+</script>
+</body>
+</html>

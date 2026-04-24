@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Minerva Demo - 画面一覧</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .flow-diagram { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+    .flow-box { background: #fff; border: 2px solid #0176d3; border-radius: 8px; padding: 10px 16px; text-align: center; font-size: 13px; font-weight: 600; min-width: 120px; }
+    .flow-box a { color: #0176d3; text-decoration: none; }
+    .flow-arrow { font-size: 20px; color: #0176d3; }
+    .rule-table { width: 100%; border-collapse: collapse; }
+    .rule-table th { background: #16325c; color: #fff; padding: 8px 12px; text-align: left; font-size: 12px; }
+    .rule-table td { padding: 8px 12px; border-bottom: 1px solid #e5e5e5; font-size: 13px; }
+    .rule-table tr:nth-child(even) td { background: #f8f8f8; }
+  </style>
+</head>
+<body>
+<header class="sf-header">
+  <a href="index.html" class="logo">⚡ Minerva CRM</a>
+  <nav>
+    <a href="index.html">ホーム</a>
+    <a href="leads.html">架電リスト</a>
+    <a href="screen_list.html" class="active">画面一覧</a>
+  </nav>
+</header>
+
+<div class="sf-page">
+  <div class="page-header">
+    <div class="page-title">📐 画面一覧・遷移図</div>
+  </div>
+
+  <!-- 遷移フロー -->
+  <div class="sf-card">
+    <div class="sf-card-header"><span class="sf-card-title">画面遷移フロー</span></div>
+    <div class="sf-card-body">
+      <div class="flow-diagram">
+        <div class="flow-box"><a href="index.html">🏠 ホーム<br><small>ダッシュボード</small></a></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box"><a href="leads.html">📞 架電リスト<br><small>今日の架電</small></a></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box"><a href="opportunity.html?id=OPP-001">📋 商談詳細<br><small>活動記録・タイムライン</small></a></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="border-color:#ff9e2c">
+          <span style="color:#c77b00">📝 活動記録<br><small>（モーダル）</small></span>
+        </div>
+      </div>
+      <div class="flow-diagram" style="margin-top:8px">
+        <div style="width:120px"></div>
+        <div class="flow-arrow" style="visibility:hidden">→</div>
+        <div class="flow-arrow">↕</div>
+      </div>
+      <div class="flow-diagram">
+        <div style="width:280px"></div>
+        <div class="flow-arrow" style="visibility:hidden">→</div>
+        <div class="flow-box"><a href="case.html?id=CASE-001">🎫 ケース詳細<br><small>関連商談リンク</small></a></div>
+      </div>
+      <p style="font-size:12px;color:#706e6b;margin-top:8px">※ 商談詳細とケース詳細は同一顧客(Account)で相互リンク</p>
+    </div>
+  </div>
+
+  <!-- 画面一覧 -->
+  <div class="sf-card">
+    <div class="sf-card-header"><span class="sf-card-title">画面一覧</span></div>
+    <div class="sf-card-body" style="padding:0">
+      <table class="sf-table">
+        <thead>
+          <tr><th>ファイル</th><th>画面名</th><th>主な機能</th><th>リンク</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>index.html</code></td>
+            <td>ホームダッシュボード</td>
+            <td>商談一覧・ケース一覧・サマリメトリクス</td>
+            <td><a href="index.html">開く</a></td>
+          </tr>
+          <tr>
+            <td><code>leads.html</code></td>
+            <td>架電リスト</td>
+            <td>今日の架電対象・優先度表示・架電ボタン</td>
+            <td><a href="leads.html">開く</a></td>
+          </tr>
+          <tr>
+            <td><code>opportunity.html</code></td>
+            <td>商談詳細</td>
+            <td>最新ステータス・次アクション・活動タイムライン・関連ケース</td>
+            <td><a href="opportunity.html?id=OPP-001">開く</a></td>
+          </tr>
+          <tr>
+            <td><code>case.html</code></td>
+            <td>ケース詳細</td>
+            <td>ケース情報・関連商談（同一顧客）</td>
+            <td><a href="case.html?id=CASE-001">開く</a></td>
+          </tr>
+          <tr>
+            <td><code>screen_list.html</code></td>
+            <td>画面一覧・遷移図</td>
+            <td>本ページ・更新ルール一覧</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 更新ルール -->
+  <div class="sf-card">
+    <div class="sf-card-header"><span class="sf-card-title">📋 活動記録 → 商談更新ルール（if/then）</span></div>
+    <div class="sf-card-body" style="padding:0">
+      <table class="rule-table">
+        <thead>
+          <tr>
+            <th>コール結果（IF）</th>
+            <th>最新ステータス</th>
+            <th>次アクション</th>
+            <th>ステージ変化</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>📵 不通</td>
+            <td><span class="badge" style="background:#c23934">不通</span></td>
+            <td>再架電</td>
+            <td>変化なし</td>
+          </tr>
+          <tr>
+            <td>📞 通電</td>
+            <td><span class="badge" style="background:#2e844a">通電済</span></td>
+            <td>フォロー確認</td>
+            <td>変化なし</td>
+          </tr>
+          <tr>
+            <td>⏰ いま忙しい</td>
+            <td><span class="badge" style="background:#ff9e2c">折り返し待ち</span></td>
+            <td>再架電</td>
+            <td>変化なし</td>
+          </tr>
+          <tr>
+            <td>🔄 折り返し依頼</td>
+            <td><span class="badge" style="background:#ff9e2c">折り返し待ち</span></td>
+            <td>折り返し確認</td>
+            <td>変化なし</td>
+          </tr>
+          <tr>
+            <td>🎯 アポ獲得</td>
+            <td><span class="badge" style="background:#0176d3">アポ確定</span></td>
+            <td>MTG準備</td>
+            <td><strong>1段階前進</strong>（例：アプローチ中→商談中）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- サンプルデータ -->
+  <div class="sf-card">
+    <div class="sf-card-header"><span class="sf-card-title">📊 サンプルデータ構成</span></div>
+    <div class="sf-card-body">
+      <div class="detail-grid">
+        <div class="detail-item"><label>Account（顧客）</label><span>2件：株式会社テックアルファ / 株式会社ビジネスベータ</span></div>
+        <div class="detail-item"><label>Opportunity（商談）</label><span>3件：各ステータス違いで用意</span></div>
+        <div class="detail-item"><label>Case（ケース）</label><span>2件：顧客に1件ずつ紐付け</span></div>
+        <div class="detail-item"><label>Activity（活動記録）</label><span>0件スタート（デモ操作で追加）</span></div>
+      </div>
+      <div style="margin-top:12px;font-size:12px;color:#706e6b">
+        ※ データはブラウザのlocalStorageに保存されます。右下の「🔄 データリセット」でリセット可能です。
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

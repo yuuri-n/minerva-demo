@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Minerva Demo - ケース詳細</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="sf-header">
+  <a href="index.html" class="logo">⚡ Minerva CRM</a>
+  <nav>
+    <a href="index.html">ホーム</a>
+    <a href="leads.html">架電リスト</a>
+    <a href="screen_list.html">画面一覧</a>
+  </nav>
+</header>
+
+<div class="sf-page">
+  <div class="breadcrumb"><a href="index.html">ホーム</a> &rsaquo; ケース詳細</div>
+  <div id="main-content"></div>
+</div>
+
+<button class="reset-btn" onclick="resetData(); location.href='index.html';">🔄 データリセット</button>
+
+<script src="data.js"></script>
+<script>
+  const params = new URLSearchParams(location.search);
+  const caseId = params.get('id') || 'CASE-001';
+
+  const data = getData();
+  const c = data.cases.find(x => x.id === caseId);
+  const acc = getAccount(c.accountId);
+  const relatedOpps = getOpportunitiesForAccount(c.accountId);
+
+  const priorityClass = { '高': 'priority-high', '中': 'priority-mid', '低': 'priority-low' };
+  const statusClass = { 'オープン': 'case-open', '対応中': 'case-inprog', 'クローズ': 'case-closed' };
+
+  document.getElementById('main-content').innerHTML = `
+    <div class="page-header">
+      <div>
+        <div class="page-title">🎫 ${c.subject}</div>
+        <div style="font-size:13px;color:#706e6b;margin-top:4px">${acc.name}</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <a href="index.html" class="btn btn-secondary">← ホームへ</a>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <!-- ケース基本情報 -->
+        <div class="sf-card">
+          <div class="sf-card-header"><span class="sf-card-title">ケース情報</span></div>
+          <div class="sf-card-body">
+            <div class="detail-grid">
+              <div class="detail-item">
+                <label>ケースID</label>
+                <span>${c.id}</span>
+              </div>
+              <div class="detail-item">
+                <label>ステータス</label>
+                <span><span class="badge ${statusClass[c.status] || ''}">${c.status}</span></span>
+              </div>
+              <div class="detail-item">
+                <label>優先度</label>
+                <span><span class="badge ${priorityClass[c.priority] || ''}">${c.priority}</span></span>
+              </div>
+              <div class="detail-item">
+                <label>会社名</label>
+                <span>${acc.name}</span>
+              </div>
+              <div class="detail-item" style="grid-column:1/-1">
+                <label>説明</label>
+                <span>${c.description}</span>
+              </div>
+              <div class="detail-item">
+                <label>作成日時</label>
+                <span>${formatDate(c.createdAt)}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 関連商談 -->
+      <div>
+        <div class="sf-card">
+          <div class="sf-card-header">
+            <span class="sf-card-title">📋 関連商談（${acc.name}）</span>
+          </div>
+          <div class="sf-card-body" style="padding:0">
+            ${relatedOpps.length === 0
+              ? '<div class="empty-state">関連商談なし</div>'
+              : `<table class="sf-table">
+                  <thead><tr><th>商談名</th><th>ステージ</th><th>ステータス</th></tr></thead>
+                  <tbody>
+                    ${relatedOpps.map(o => `
+                      <tr>
+                        <td><a href="opportunity.html?id=${o.id}">${o.name}</a></td>
+                        <td><span class="badge" style="background:${stageColor(o.stage)};font-size:10px">${o.stage}</span></td>
+                        <td><span class="badge" style="background:${callStatusBadge(o.callStatus)};font-size:10px">${o.callStatus}</span></td>
+                      </tr>`).join('')}
+                  </tbody>
+                </table>`
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+</script>
+</body>
+</html>
