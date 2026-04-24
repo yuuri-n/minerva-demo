@@ -46,7 +46,7 @@
       </div>
       <div class="form-group">
         <label>メモ</label>
-        <textarea id="memo" rows="3" placeholder="通話内容・申し送り事項など"></textarea>
+        <textarea id="memo" rows="3" placeholder="通話内容・商材別の確認事項・次回提案内容など"></textarea>
       </div>
     </div>
     <div class="modal-footer">
@@ -123,6 +123,14 @@
                 <div class="detail-item">
                   <label>会社名</label>
                   <span>${acc.name}</span>
+                </div>
+                <div class="detail-item" style="grid-column:1/-1">
+                  <label>流入キーワード</label>
+                  <span style="font-weight:600;color:#0176d3">${opp.keyword || '—'}</span>
+                </div>
+                <div class="detail-item" style="grid-column:1/-1">
+                  <label>問い合わせ内容</label>
+                  <span style="font-size:12px">${opp.inquiryNote || '—'}</span>
                 </div>
               </div>
             </div>
