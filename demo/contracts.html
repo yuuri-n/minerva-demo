@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Minerva Demo - 導入管理</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="sf-header">
+  <a href="index.html" class="logo">⚡ Minerva CRM</a>
+  <nav>
+    <a href="index.html">ホーム</a>
+    <a href="leads.html">架電リスト</a>
+    <a href="contracts.html" class="active">導入管理</a>
+    <a href="screen_list.html">画面一覧</a>
+  </nav>
+</header>
+
+<div class="sf-page">
+  <div class="page-header">
+    <div>
+      <div class="page-title">📦 導入管理</div>
+    </div>
+  </div>
+
+  <!-- Metrics -->
+  <div class="metrics-row" style="grid-template-columns:repeat(5,1fr)" id="metrics"></div>
+
+  <!-- 契約一覧 -->
+  <div class="sf-card">
+    <div class="sf-card-header">
+      <span class="sf-card-title">契約済み商材一覧</span>
+      <span style="font-size:12px;color:#706e6b" id="count"></span>
+    </div>
+    <div class="sf-card-body" style="padding:0">
+      <table class="sf-table" id="contracts-table"></table>
+    </div>
+  </div>
+</div>
+
+<button class="reset-btn" onclick="resetData(); location.reload();">🔄 データリセット</button>
+
+<script src="data.js"></script>
+<script>
+  const data = getData();
+  const contracts = data.contracts || [];
+
+  document.getElementById('count').textContent = `${contracts.length}件`;
+
+  document.getElementById('metrics').innerHTML = `
+    <div class="metric-card">
+      <div class="metric-label">契約総数</div>
+      <div class="metric-value">${contracts.length}</div>
+      <div class="metric-sub">件</div>
+    </div>
+    <div class="metric-card orange">
+      <div class="metric-label">講習待ち</div>
+      <div class="metric-value">${contracts.filter(c => c.status === '講習待ち').length}</div>
+      <div class="metric-sub">件</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">講習完了</div>
+      <div class="metric-value">${contracts.filter(c => c.status === '講習完了').length}</div>
+      <div class="metric-sub">件（初回注文待ち）</div>
+    </div>
+    <div class="metric-card green">
+      <div class="metric-label">運用中</div>
+      <div class="metric-value">${contracts.filter(c => c.status === '運用中').length}</div>
+      <div class="metric-sub">件</div>
+    </div>
+    <div class="metric-card red">
+      <div class="metric-label">フォロー要</div>
+      <div class="metric-value">${contracts.filter(c => c.status === 'フォロー要').length}</div>
+      <div class="metric-sub">件（要対応）</div>
+    </div>
+  `;
+
+  document.getElementById('contracts-table').innerHTML = `
+    <thead>
+      <tr>
+        <th>顧客名</th>
+        <th>商材</th>
+        <th>流入KW</th>
+        <th>契約日</th>
+        <th>導入ステータス</th>
+        <th>講習日</th>
+        <th>初回注文</th>
+        <th>次回フォロー</th>
+        <th>備考</th>
+        <th>アクション</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${contracts.map(c => {
+        const acc = getAccount(c.accountId);
+        return `<tr>
+          <td><a href="account.html?id=${acc.id}">${acc.name}</a></td>
+          <td style="font-weight:600">${c.product}</td>
+          <td style="font-size:11px;color:#0176d3;font-weight:600">${c.keyword}</td>
+          <td style="font-size:12px">${formatDateOnly(c.contractDate)}</td>
+          <td><span class="badge" style="background:${contractStatusColor(c.status)}">${c.status}</span></td>
+          <td style="font-size:12px">${c.lectureDate ? formatDateOnly(c.lectureDate) : '<span style="color:#c23934">未実施</span>'}</td>
+          <td style="font-size:12px">${c.firstOrderDate ? formatDateOnly(c.firstOrderDate) : '<span style="color:#706e6b">—</span>'}</td>
+          <td style="font-size:12px;${new Date(c.nextFollowAt) < new Date() ? 'color:#c23934;font-weight:600' : ''}">${formatDateOnly(c.nextFollowAt)}</td>
+          <td style="font-size:11px;color:#444;max-width:180px">${c.note}</td>
+          <td><a href="account.html?id=${acc.id}" class="btn btn-secondary btn-sm">顧客詳細 →</a></td>
+        </tr>`;
+      }).join('')}
+    </tbody>
+  `;
+</script>
+</body>
+</html>

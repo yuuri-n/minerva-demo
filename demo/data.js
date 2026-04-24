@@ -41,7 +41,39 @@ const initialData = {
       createdAt: '2026-04-21T14:30'
     }
   ],
-  activities: []
+  activities: [],
+  contracts: [
+    {
+      id: 'CON-001', accountId: 'ACC-001',
+      product: 'ララピール', keyword: 'ララピール 仕入れ',
+      amount: 150000, contractDate: '2026-02-10',
+      status: '運用中',
+      lectureDate: '2026-02-20',
+      firstOrderDate: '2026-03-01',
+      nextFollowAt: '2026-05-01',
+      note: 'メニュー化完了。月2〜3件施術中。次回フォローで追加ロット提案予定'
+    },
+    {
+      id: 'CON-002', accountId: 'ACC-001',
+      product: 'レモンボトル', keyword: 'レモンボトル 正規導入',
+      amount: 280000, contractDate: '2026-04-20',
+      status: '講習完了',
+      lectureDate: '2026-04-23',
+      firstOrderDate: null,
+      nextFollowAt: '2026-05-10',
+      note: '講習済み。初回注文はまだ。GW明けに連絡予定'
+    },
+    {
+      id: 'CON-003', accountId: 'ACC-002',
+      product: 'エステ商材セット（卸）', keyword: 'エステ 商材 仕入れ',
+      amount: 200000, contractDate: '2026-04-05',
+      status: 'フォロー要',
+      lectureDate: null,
+      firstOrderDate: null,
+      nextFollowAt: '2026-04-25',
+      note: '契約後、講習日程の連絡が取れていない。早急にフォロー必要'
+    }
+  ]
 };
 
 function getData() {
@@ -126,6 +158,20 @@ function getCasesForAccount(accountId) {
 
 function getOpportunitiesForAccount(accountId) {
   return getData().opportunities.filter(o => o.accountId === accountId);
+}
+
+function getContractsForAccount(accountId) {
+  return (getData().contracts || []).filter(c => c.accountId === accountId);
+}
+
+function contractStatusColor(status) {
+  const map = {
+    '講習待ち': '#ff9e2c',
+    '講習完了': '#0176d3',
+    '運用中':   '#2e844a',
+    'フォロー要': '#c23934'
+  };
+  return map[status] || '#888';
 }
 
 function stageColor(stage) {

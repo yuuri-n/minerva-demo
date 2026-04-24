@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Minerva Demo - 顧客詳細</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="sf-header">
+  <a href="index.html" class="logo">⚡ Minerva CRM</a>
+  <nav>
+    <a href="index.html">ホーム</a>
+    <a href="leads.html">架電リスト</a>
+    <a href="contracts.html">導入管理</a>
+    <a href="screen_list.html">画面一覧</a>
+  </nav>
+</header>
+
+<div class="sf-page">
+  <div class="breadcrumb"><a href="index.html">ホーム</a> &rsaquo; <a href="contracts.html">導入管理</a> &rsaquo; 顧客詳細</div>
+  <div id="main-content"></div>
+</div>
+
+<button class="reset-btn" onclick="resetData(); location.href='index.html';">🔄 データリセット</button>
+
+<script src="data.js"></script>
+<script>
+  const params = new URLSearchParams(location.search);
+  const accountId = params.get('id') || 'ACC-001';
+
+  const data = getData();
+  const acc = getAccount(accountId);
+  const contracts = getContractsForAccount(accountId);
+  const opportunities = getOpportunitiesForAccount(accountId);
+  const cases = getCasesForAccount(accountId);
+  const activities = data.activities.filter(a => a.accountId === accountId);
+
+  const statusClass = { 'オープン': 'case-open', '対応中': 'case-inprog', 'クローズ': 'case-closed' };
+
+  document.getElementById('main-content').innerHTML = `
+    <div class="page-header">
+      <div>
+        <div class="page-title">🏢 ${acc.name}</div>
+        <div style="font-size:13px;color:#706e6b;margin-top:4px">${acc.industry} &nbsp;|&nbsp; ${acc.phone}</div>
+      </div>
+      <a href="contracts.html" class="btn btn-secondary">← 導入管理へ</a>
+    </div>
+
+    <!-- 契約商材 ハイライト -->
+    <div style="display:grid;grid-template-columns:repeat(${Math.max(contracts.length, 1)},1fr);gap:12px;margin-bottom:16px">
+      ${contracts.length === 0
+        ? `<div class="highlight-box" style="border-left-color:#888;background:#f8f8f8">
+             <div class="label">契約商材</div>
+             <div class="value" style="font-size:14px;color:#888">契約なし</div>
+           </div>`
+        : contracts.map(c => `
+          <div class="highlight-box"
+               style="border-left-color:${contractStatusColor(c.status)};background:${
+                 c.status === 'フォロー要' ? '#fff5f5' :
+                 c.status === '運用中'     ? '#f0fff4' : '#f0f8ff'}">
+            <div class="label">${c.product}</div>
+            <div class="value" style="font-size:16px;color:${contractStatusColor(c.status)}">${c.status}</div>
+            <div class="sub">¥${c.amount.toLocaleString()} ・ 契約 ${formatDateOnly(c.contractDate)}</div>
+            <div class="sub" style="margin-top:4px">次回フォロー：${formatDateOnly(c.nextFollowAt)}</div>
+          </div>`).join('')
+      }
+    </div>
+
+    <div class="two-col">
+      <div>
+        <!-- 契約商材詳細テーブル -->
+        <div class="sf-card">
+          <div class="sf-card-header">
+            <span class="sf-card-title">📦 契約商材詳細</span>
+            <span style="font-size:12px;color:#706e6b">${contracts.length}件</span>
+          </div>
+          <div class="sf-card-body" style="padding:0">
+            ${contracts.length === 0
+              ? '<div class="empty-state">契約商材なし</div>'
+              : `<table class="sf-table">
+                  <thead>
+                    <tr><th>商材</th><th>ステータス</th><th>講習日</th><th>初回注文</th><th>備考</th></tr>
+                  </thead>
+                  <tbody>
+                    ${contracts.map(c => `
+                      <tr>
+                        <td>
+                          <div style="font-weight:600">${c.product}</div>
+                          <div style="font-size:11px;color:#0176d3">${c.keyword}</div>
+                        </td>
+                        <td><span class="badge" style="background:${contractStatusColor(c.status)}">${c.status}</span></td>
+                        <td style="font-size:12px">${c.lectureDate ? formatDateOnly(c.lectureDate) : '<span style="color:#c23934">未実施</span>'}</td>
+                        <td style="font-size:12px">${c.firstOrderDate ? formatDateOnly(c.firstOrderDate) : '—'}</td>
+                        <td style="font-size:11px;color:#444">${c.note}</td>
+                      </tr>`).join('')}
+                  </tbody>
+                </table>`
+            }
+          </div>
+        </div>
+
+        <!-- 活動タイムライン -->
+        <div class="sf-card">
+          <div class="sf-card-header">
+            <span class="sf-card-title">📅 活動タイムライン（全商談）</span>
+            <span style="font-size:12px;color:#706e6b">${activities.length}件</span>
+          </div>
+          <div class="sf-card-body">
+            ${activities.length === 0
+              ? '<div class="empty-state">活動記録がありません</div>'
+              : `<ul class="timeline">
+                  ${activities.map(a => {
+                    const opp = data.opportunities.find(o => o.id === a.opportunityId);
+                    const icon = { '不通': '📵', '通電': '📞', 'いま忙しい': '⏰', '折り返し依頼': '🔄', 'アポ獲得': '🎯' }[a.callResult] || '📞';
+                    return `<li class="timeline-item">
+                      <div class="timeline-icon">${icon}</div>
+                      <div class="timeline-content">
+                        <div class="timeline-title">${a.callResult}</div>
+                        <div class="timeline-meta">
+                          ${formatDate(a.createdAt)} &nbsp;|&nbsp;
+                          <a href="opportunity.html?id=${a.opportunityId}">${opp ? opp.name : a.opportunityId}</a>
+                        </div>
+                        ${a.memo ? `<div class="timeline-memo">${a.memo}</div>` : ''}
+                      </div>
+                    </li>`;
+                  }).join('')}
+                </ul>`
+            }
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <!-- 商談一覧 -->
+        <div class="sf-card">
+          <div class="sf-card-header">
+            <span class="sf-card-title">📋 商談一覧</span>
+            <a href="leads.html" class="btn btn-primary btn-sm">架電リストへ</a>
+          </div>
+          <div class="sf-card-body" style="padding:0">
+            ${opportunities.length === 0
+              ? '<div class="empty-state">商談なし</div>'
+              : `<table class="sf-table">
+                  <thead><tr><th>商談名</th><th>ステージ</th><th>ステータス</th></tr></thead>
+                  <tbody>
+                    ${opportunities.map(o => `
+                      <tr>
+                        <td><a href="opportunity.html?id=${o.id}">${o.name}</a></td>
+                        <td><span class="badge" style="background:${stageColor(o.stage)};font-size:10px">${o.stage}</span></td>
+                        <td><span class="badge" style="background:${callStatusBadge(o.callStatus)};font-size:10px">${o.callStatus}</span></td>
+                      </tr>`).join('')}
+                  </tbody>
+                </table>`
+            }
+          </div>
+        </div>
+
+        <!-- ケース一覧 -->
+        <div class="sf-card">
+          <div class="sf-card-header"><span class="sf-card-title">🎫 ケース一覧</span></div>
+          <div class="sf-card-body" style="padding:0">
+            ${cases.length === 0
+              ? '<div class="empty-state">ケースなし</div>'
+              : `<table class="sf-table">
+                  <thead><tr><th>件名</th><th>ステータス</th></tr></thead>
+                  <tbody>
+                    ${cases.map(c => `
+                      <tr>
+                        <td><a href="case.html?id=${c.id}">${c.subject}</a></td>
+                        <td><span class="badge ${statusClass[c.status] || ''}">${c.status}</span></td>
+                      </tr>`).join('')}
+                  </tbody>
+                </table>`
+            }
+          </div>
+        </div>
+
+        <!-- 顧客基本情報 -->
+        <div class="sf-card">
+          <div class="sf-card-header"><span class="sf-card-title">顧客情報</span></div>
+          <div class="sf-card-body">
+            <div class="detail-grid">
+              <div class="detail-item"><label>顧客ID</label><span>${acc.id}</span></div>
+              <div class="detail-item"><label>業種</label><span>${acc.industry}</span></div>
+              <div class="detail-item" style="grid-column:1/-1"><label>電話番号</label><span>${acc.phone}</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+</script>
+</body>
+</html>
