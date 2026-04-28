@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>リード_リマインドタスク作成 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>リード_リマインドタスク作成</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value><stringValue>LightningFlowBuilder</stringValue></value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value><stringValue>AUTO_LAYOUT_CANVAS</stringValue></value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <filterLogic>1 OR 2 OR 3</filterLogic>
+        <filters>
+            <field>SubStatus__c</field>
+            <operator>EqualTo</operator>
+            <value><stringValue>折り返し待ち</stringValue></value>
+        </filters>
+        <filters>
+            <field>SubStatus__c</field>
+            <operator>EqualTo</operator>
+            <value><stringValue>今忙し</stringValue></value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value><stringValue>見込み</stringValue></value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <connector>
+            <targetReference>Create_Reminder_Task</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <formulas>
+        <name>TaskSubject</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.SubStatus__c} = "折り返し待ち",
+  "【リマインド】折り返し確認: " &amp; {!$Record.Name},
+  IF({!$Record.SubStatus__c} = "今忙し",
+    "【リマインド】再アプローチ（今忙し）: " &amp; {!$Record.Name},
+    "【リマインド】見込みフォロー: " &amp; {!$Record.Name}
+  )
+)</expression>
+    </formulas>
+    <recordCreates>
+        <name>Create_Reminder_Task</name>
+        <label>リマインドタスクを作成</label>
+        <locationX>50</locationX>
+        <locationY>134</locationY>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value><elementReference>$Record.OwnerId</elementReference></value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value><elementReference>TaskSubject</elementReference></value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhoId</field>
+            <value><elementReference>$Record.Id</elementReference></value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value><elementReference>$Flow.CurrentDate</elementReference></value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value><stringValue>未開始</stringValue></value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value><stringValue>高</stringValue></value>
+        </inputAssignments>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+</Flow>

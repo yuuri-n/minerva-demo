@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IS_Owner__c</fullName>
+    <label>IS担当者（商談獲得者）</label>
+    <type>Lookup</type>
+    <referenceTo>User</referenceTo>
+    <relationshipLabel>IS担当商談</relationshipLabel>
+    <relationshipName>IS_Opportunities</relationshipName>
+</CustomField>
