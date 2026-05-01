@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CSStatus__c</fullName>
+    <label>CSステータス</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>オンボーディング中</fullName>
+                <default>false</default>
+                <label>オンボーディング中</label>
+            </value>
+            <value>
+                <fullName>活用中</fullName>
+                <default>false</default>
+                <label>活用中</label>
+            </value>
+            <value>
+                <fullName>リスク</fullName>
+                <default>false</default>
+                <label>リスク</label>
+            </value>
+            <value>
+                <fullName>チャーン</fullName>
+                <default>false</default>
+                <label>チャーン</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
