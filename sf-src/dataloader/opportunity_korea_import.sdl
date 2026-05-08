@@ -1,0 +1,12 @@
+\!version 1
+\!mapping
+"Name"="Name"
+"AccountId"="AccountId"
+"StageName"="StageName"
+"CloseDate"="CloseDate"
+"Amount"="Amount"
+"AccountDivision__c"="AccountDivision__c"
+"CurrencyType__c"="CurrencyType__c"
+"ExchangeRate__c"="ExchangeRate__c"
+"Description"="Description"
+"OwnerId"="OwnerId"
