@@ -474,6 +474,62 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.AccountDivision__c</fieldItem>
+                <identifier>RecordAccountDivisionField8L0</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CurrencyType__c</fieldItem>
+                <identifier>RecordCurrencyTypeField8L1</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-sales-info-left</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.ExchangeRate__c</fieldItem>
+                <identifier>RecordExchangeRateField8R0</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.JPYAmount__c</fieldItem>
+                <identifier>RecordJPYAmountField8R1</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-sales-info-right</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-sales-info-left</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column_8_left</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-sales-info-right</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column_8_right</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-sales-info-columns</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>columns</name>
@@ -615,6 +671,24 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection_7</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-sales-info-columns</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>売上情報</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection_8</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-3fffac2c-0fa7-4b91-a287-e2b7a017653b</name>
