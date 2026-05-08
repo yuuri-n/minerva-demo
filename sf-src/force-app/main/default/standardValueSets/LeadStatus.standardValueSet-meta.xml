@@ -4,13 +4,7 @@
     <standardValue>
         <fullName>未コンタクト</fullName>
         <default>true</default>
-        <label>未コンタクト</label>
-        <converted>false</converted>
-    </standardValue>
-    <standardValue>
-        <fullName>今いそ</fullName>
-        <default>false</default>
-        <label>今いそ</label>
+        <label>連絡前</label>
         <converted>false</converted>
     </standardValue>
     <standardValue>

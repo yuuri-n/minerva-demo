@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>行動_終了日時自動設定 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>行動_終了日時自動設定</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value><stringValue>LightningFlowBuilder</stringValue></value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value><stringValue>AUTO_LAYOUT_CANVAS</stringValue></value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>EndDateTime</field>
+            <operator>IsNull</operator>
+            <value><booleanValue>true</booleanValue></value>
+        </filters>
+        <object>Event</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+        <connector>
+            <targetReference>Set_EndDateTime</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <formulas>
+        <name>AutoEndDateTime</name>
+        <dataType>DateTime</dataType>
+        <expression>{!$Record.StartDateTime} + (1/24)</expression>
+    </formulas>
+    <assignments>
+        <name>Set_EndDateTime</name>
+        <label>終了日時を自動設定</label>
+        <locationX>50</locationX>
+        <locationY>134</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.EndDateTime</assignToReference>
+            <operator>Assign</operator>
+            <value><elementReference>AutoEndDateTime</elementReference></value>
+        </assignmentItems>
+    </assignments>
+</Flow>
