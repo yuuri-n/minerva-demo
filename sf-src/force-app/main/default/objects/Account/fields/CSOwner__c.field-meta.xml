@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CSOwner__c</fullName>
+    <label>CS担当者</label>
+    <required>false</required>
+    <type>Lookup</type>
+    <referenceTo>User</referenceTo>
+    <relationshipLabel>CS担当取引先</relationshipLabel>
+    <relationshipName>CS_Accounts</relationshipName>
+</CustomField>

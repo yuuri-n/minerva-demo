@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LastApproachBy__c</fullName>
+    <label>最終アプローチ担当者</label>
+    <referenceTo>User</referenceTo>
+    <relationshipLabel>リード（最終アプローチ担当者）</relationshipLabel>
+    <relationshipName>LastApproachLeads</relationshipName>
+    <type>Lookup</type>
+</CustomField>

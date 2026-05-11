@@ -1,41 +1,79 @@
 const initialData = {
   accounts: [
-    { id: 'ACC-001', name: '株式会社テックアルファ', industry: 'IT', phone: '03-1234-5678' },
-    { id: 'ACC-002', name: '株式会社ビジネスベータ', industry: '製造', phone: '06-9876-5432' }
+    { id: 'ACC-001', name: 'リラクゼーションサロン クレア', industry: '美容・リラクゼーション', phone: '03-1234-5678' },
+    { id: 'ACC-002', name: 'エステサロン ラ・ルーチェ', industry: '美容・エステ', phone: '06-9876-5432' }
   ],
   opportunities: [
     {
-      id: 'OPP-001', accountId: 'ACC-001', name: 'システム導入提案',
-      stage: 'アプローチ中', amount: 3000000,
-      callStatus: '未架電', nextActionNote: '初回架電', nextActionAt: '2026-04-21T10:00',
-      lastContactedAt: null, closeDate: '2026-06-30'
+      id: 'OPP-001', accountId: 'ACC-001', name: 'ララピール 導入提案',
+      stage: 'アプローチ中', amount: 150000,
+      callStatus: '未架電', nextActionNote: '初回架電', nextActionAt: '2026-04-25T10:00',
+      lastContactedAt: null, closeDate: '2026-06-30',
+      keyword: 'ララピール 導入',
+      inquiryNote: '新規メニューとしてララピールを導入したい。条件（価格/ロット/講習）を知りたい'
     },
     {
-      id: 'OPP-002', accountId: 'ACC-001', name: '追加ライセンス拡張',
-      stage: '商談中', amount: 800000,
-      callStatus: '通電済', nextActionNote: '資料送付後フォロー', nextActionAt: '2026-04-22T14:00',
-      lastContactedAt: '2026-04-18T11:30', closeDate: '2026-05-31'
+      id: 'OPP-002', accountId: 'ACC-001', name: 'レモンボトル 正規導入支援',
+      stage: '商談中', amount: 280000,
+      callStatus: '通電済', nextActionNote: '資料送付後フォロー', nextActionAt: '2026-04-26T14:00',
+      lastContactedAt: '2026-04-22T11:30', closeDate: '2026-05-31',
+      keyword: 'レモンボトル 正規導入',
+      inquiryNote: 'レモンボトルの正規導入を検討中。施術提供までの流れ（講習/同意書/注意事項）を確認したい'
     },
     {
-      id: 'OPP-003', accountId: 'ACC-002', name: 'CRM導入支援',
-      stage: 'アプローチ中', amount: 5000000,
-      callStatus: '不通', nextActionNote: '再架電', nextActionAt: '2026-04-21T15:00',
-      lastContactedAt: '2026-04-19T09:00', closeDate: '2026-07-31'
+      id: 'OPP-003', accountId: 'ACC-002', name: '美容商材 卸・仕入れ提案',
+      stage: 'アプローチ中', amount: 500000,
+      callStatus: '不通', nextActionNote: '再架電', nextActionAt: '2026-04-25T15:00',
+      lastContactedAt: '2026-04-23T09:00', closeDate: '2026-07-31',
+      keyword: '美容 商材 卸',
+      inquiryNote: '既存メニューの差別化のため、卸で仕入れ可能な商材と"売れる提案資料/トーク"も欲しい'
     }
   ],
   cases: [
     {
-      id: 'CASE-001', accountId: 'ACC-001', subject: '操作方法の問い合わせ',
-      status: 'オープン', priority: '中', description: 'ダッシュボードの表示が崩れる',
-      createdAt: '2026-04-15T10:00'
+      id: 'CASE-001', accountId: 'ACC-001', subject: 'ララピール 講習日程の問い合わせ',
+      status: 'オープン', priority: '中', description: '初回講習の日程調整を希望。平日午後を希望しているが、オンライン対応可否も確認したい',
+      createdAt: '2026-04-19T10:00'
     },
     {
-      id: 'CASE-002', accountId: 'ACC-002', subject: 'データ移行設定依頼',
-      status: '対応中', priority: '高', description: '旧システムからのデータ移行を依頼',
-      createdAt: '2026-04-17T14:30'
+      id: 'CASE-002', accountId: 'ACC-002', subject: '商材サンプル・トークスクリプト提供依頼',
+      status: '対応中', priority: '高', description: 'エステ 商材 仕入れで問い合わせ。サンプル提供と"売れる提案トーク"資料の送付を要望',
+      createdAt: '2026-04-21T14:30'
     }
   ],
-  activities: []
+  activities: [],
+  contracts: [
+    {
+      id: 'CON-001', accountId: 'ACC-001',
+      product: 'ララピール', keyword: 'ララピール 仕入れ',
+      amount: 150000, contractDate: '2026-02-10',
+      status: '運用中',
+      lectureDate: '2026-02-20',
+      firstOrderDate: '2026-03-01',
+      nextFollowAt: '2026-05-01',
+      note: 'メニュー化完了。月2〜3件施術中。次回フォローで追加ロット提案予定'
+    },
+    {
+      id: 'CON-002', accountId: 'ACC-001',
+      product: 'レモンボトル', keyword: 'レモンボトル 正規導入',
+      amount: 280000, contractDate: '2026-04-20',
+      status: '講習完了',
+      lectureDate: '2026-04-23',
+      firstOrderDate: null,
+      nextFollowAt: '2026-05-10',
+      note: '講習済み。初回注文はまだ。GW明けに連絡予定'
+    },
+    {
+      id: 'CON-003', accountId: 'ACC-002',
+      product: 'エステ商材セット（卸）', keyword: 'エステ 商材 仕入れ',
+      amount: 200000, contractDate: '2026-04-05',
+      status: 'フォロー要',
+      lectureDate: null,
+      firstOrderDate: null,
+      nextFollowAt: '2026-04-25',
+      note: '契約後、講習日程の連絡が取れていない。早急にフォロー必要'
+    }
+  ]
 };
 
 function getData() {
@@ -120,6 +158,20 @@ function getCasesForAccount(accountId) {
 
 function getOpportunitiesForAccount(accountId) {
   return getData().opportunities.filter(o => o.accountId === accountId);
+}
+
+function getContractsForAccount(accountId) {
+  return (getData().contracts || []).filter(c => c.accountId === accountId);
+}
+
+function contractStatusColor(status) {
+  const map = {
+    '講習待ち': '#ff9e2c',
+    '講習完了': '#0176d3',
+    '運用中':   '#2e844a',
+    'フォロー要': '#c23934'
+  };
+  return map[status] || '#888';
 }
 
 function stageColor(stage) {
