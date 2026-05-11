@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Channel__c</fullName>
+    <label>チャネル</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>EC販売</fullName>
+                <default>false</default>
+                <label>EC販売</label>
+            </value>
+            <value>
+                <fullName>店舗決済</fullName>
+                <default>false</default>
+                <label>店舗決済</label>
+            </value>
+            <value>
+                <fullName>銀行振込</fullName>
+                <default>false</default>
+                <label>銀行振込</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

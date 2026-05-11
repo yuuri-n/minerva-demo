@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FulfillmentStatus__c</fullName>
+    <label>出荷ステータス</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>未出荷</fullName>
+                <default>false</default>
+                <label>未出荷</label>
+            </value>
+            <value>
+                <fullName>出荷済</fullName>
+                <default>false</default>
+                <label>出荷済</label>
+            </value>
+            <value>
+                <fullName>fulfilled</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>fulfilled</label>
+            </value>
+            <value>
+                <fullName>pending</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>pending</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

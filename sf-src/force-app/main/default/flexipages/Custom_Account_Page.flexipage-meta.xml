@@ -365,6 +365,12 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>force:relatedListContainer</componentName>
+                <identifier>force_relatedListContainer</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>Facet-ddc3ca5d-05d9-4a7c-a9ff-d90b2c24d272</name>
         <type>Facet</type>
     </flexiPageRegions>

@@ -42,13 +42,17 @@ minerva-demo/
 └── sf-src/             # Salesforceメタデータ（実装の本体）
     └── force-app/main/default/
         ├── flows/          # 自動化Flow
-        ├── objects/        # カスタム項目
+        ├── objects/        # カスタム項目・カスタムオブジェクト
         │   ├── Lead/fields/
         │   ├── Opportunity/fields/
-        │   └── Account/fields/
+        │   ├── Account/fields/
+        │   ├── Brand__c/               # ブランドマスタ
+        │   ├── Sales_Transaction__c/   # 売上トランザクション（Shopify等連携想定）
+        │   ├── Sales_Transaction_Item__c/ # 売上明細
+        │   └── Appointment__c/         # アポイント
         ├── flexipages/     # Lightningページ（画面レイアウト）
         ├── layouts/        # ページレイアウト（FlexiPageに上書きされるため参考程度）
-        ├── profiles/       # Admin プロファイル（FLS管理）
+        ├── profiles/       # Admin プロファイル（ModifyAllDataのためFLS設定不要）
         ├── quickActions/   # クイックアクション
         └── standardValueSets/ # 選択リスト値
 ```
@@ -113,19 +117,31 @@ minerva-demo/
 各オブジェクトはカスタムFlexiPageを使用（ページレイアウトより優先）。
 **FlexiPageを編集しないと画面に反映されない。**
 
-| FlexiPage名 | 対象オブジェクト |
-|---|---|
-| Lead_Record_Page_Three_Column | Lead |
-| Custom_Opportunity_Page | Opportunity |
-| Custom_Account_Page | Account |
+| FlexiPage名 | 対象オブジェクト | 備考 |
+|---|---|---|
+| Lead_Record_Page_Three_Column | Lead | |
+| Custom_Opportunity_Page | Opportunity | |
+| Custom_Account_Page | Account | 関連タブに `force:relatedListContainer` 追加済み（子取引先等を表示） |
+
+## カスタムオブジェクト一覧
+
+| オブジェクト | ラベル | 用途 |
+|---|---|---|
+| Brand__c | ブランド | ブランドマスタ（BrandCode__c） |
+| Sales_Transaction__c | 売上トランザクション | Shopify等からの売上データ連携想定（AutoNumber: TRX-{00000000}） |
+| Sales_Transaction_Item__c | 売上明細 | 売上トランザクションの明細行 |
+| Appointment__c | Appointment | アポイント管理（AutoNumber: APT-{00000000}） |
 
 ## 標準選択リスト
 
 ### リードステータス（LeadStatus）
-未コンタクト → 今いそ → アプローチ中 → 見込み → 商談（IsConverted=true） → NG
+未コンタクト → アプローチ中 → 見込み → 商談（IsConverted=true） → NG
 
 ### 商談フェーズ（OpportunityStage）
 商談設定済み → 商談実施済み／見込み → 商談実施済み／ナーチャリング → 契約（Won） → NG（Lost）
+
+### AccountType（取引先種別）
+標準値（Analyst/Competitor/Customer 等）＋ **問屋**（2026-05-11追加）
 
 ## 注意事項
 

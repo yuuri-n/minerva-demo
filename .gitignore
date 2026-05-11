@@ -1,2 +1,5 @@
 # Claude Code local settings (contains API tokens)
 .claude/settings.local.json
+
+# Salesforce CLI local state
+sf-src/.sf/
