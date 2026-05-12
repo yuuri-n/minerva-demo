@@ -143,6 +143,17 @@ minerva-demo/
 ### AccountType（取引先種別）
 標準値（Analyst/Competitor/Customer 等）＋ **問屋**（2026-05-11追加）
 
+### LeadSource（リードソース）
+標準値（Website/Trade Show 等）＋ **LP資料請求**（LP Resource Request、2026-05-12追加）
+
+## Web-to-Lead 設定
+
+- **フォームHTML**: `docs/web-to-lead/lemella-lp-form.html`
+- **LeadSource**: `LP Resource Request`（表示ラベル: LP資料請求）
+- **登録項目**: お名前(last_name) / サロン名・会社名(company) / メール(email) / 電話(phone)
+- **事前作業（SF UI）**: Setup → 機能設定 → マーケティング → Web-to-Lead → 有効化 が必要
+- **retURL**: `https://lemellajapan.com/lp-salon/contact/?thanks=1`（送信後ページは要変更）
+
 ## 注意事項
 
 - **FLS**: CLIでデプロイしたカスタム項目はFLSが自動付与されない。`profiles/Admin.profile-meta.xml` に `fieldPermissions` を追加してデプロイすること
