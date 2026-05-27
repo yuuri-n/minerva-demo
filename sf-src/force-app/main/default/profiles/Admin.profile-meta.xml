@@ -106,6 +106,30 @@
         <field>Account.LastCSContactDate__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <personAccountDefault>false</personAccountDefault>
+        <recordType>Opportunity.Minerva_Consumer</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <personAccountDefault>false</personAccountDefault>
+        <recordType>Opportunity.LHALA_Wholesale</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <personAccountDefault>false</personAccountDefault>
+        <recordType>Opportunity.LEMELLA_Wholesale</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <personAccountDefault>false</personAccountDefault>
+        <recordType>Opportunity.FLOWNEE_Consumer</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <userLicense>Salesforce</userLicense>
     <userPermissions>
         <enabled>true</enabled>

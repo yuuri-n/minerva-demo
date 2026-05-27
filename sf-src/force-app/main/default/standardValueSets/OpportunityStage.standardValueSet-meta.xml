@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <sorted>false</sorted>
+    <!-- ── 既存ステージ（使用中・維持） ── -->
     <standardValue>
         <fullName>商談設定済み</fullName>
         <default>false</default>
@@ -45,5 +46,155 @@
         <won>false</won>
         <forecastCategory>Omitted</forecastCategory>
         <probability>0</probability>
+    </standardValue>
+    <!-- ── Minerva_Consumer / FLOWNEE_Consumer 共通 ── -->
+    <standardValue>
+        <fullName>未コンタクト</fullName>
+        <default>false</default>
+        <label>未コンタクト</label>
+        <closed>false</closed>
+        <won>false</won>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>5</probability>
+    </standardValue>
+    <standardValue>
+        <fullName>新規会員登録</fullName>
+        <default>false</default>
+        <label>新規会員登録</label>
+        <closed>false</closed>
+        <won>false</won>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>10</probability>
+    </standardValue>
+    <standardValue>
+        <fullName>相談</fullName>
+        <default>false</default>
+        <label>相談</label>
+        <closed>false</closed>
+        <won>false</won>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>40</probability>
+    </standardValue>
+    <standardValue>
+        <fullName>リピート</fullName>
+        <default>false</default>
+        <label>リピート</label>
+        <closed>true</closed>
+        <won>true</won>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+    </standardValue>
+    <!-- ── Minerva_Consumer / LHALA_Wholesale 共通 ── -->
+    <standardValue>
+        <fullName>アプローチ</fullName>
+        <default>false</default>
+        <label>アプローチ</label>
+        <closed>false</closed>
+        <won>false</won>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>20</probability>
+    </standardValue>
+    <!-- ── Minerva_Consumer 専用 ── -->
+    <standardValue>
+        <fullName>提案</fullName>
+        <default>false</default>
+        <label>提案</label>
+        <closed>false</closed>
+        <won>false</won>
+        <forecastCategory>BestCase</forecastCategory>
+        <probability>60</probability>
+    </standardValue>
+    <standardValue>
+        <fullName>受注_購入済</fullName>
+        <default>false</default>
+        <label>受注/購入済</label>
+        <closed>true</closed>
+        <won>true</won>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+    </standardValue>
+    <!-- ── LHALA_Wholesale / LEMELLA_Wholesale 共通 ── -->
+    <standardValue>
+        <fullName>資料請求</fullName>
+        <default>false</default>
+        <label>資料請求</label>
+        <closed>false</closed>
+        <won>false</won>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>10</probability>
+    </standardValue>
+    <standardValue>
+        <fullName>商談</fullName>
+        <default>false</default>
+        <label>商談</label>
+        <closed>false</closed>
+        <won>false</won>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>40</probability>
+    </standardValue>
+    <standardValue>
+        <fullName>提案_見積</fullName>
+        <default>false</default>
+        <label>提案・見積</label>
+        <closed>false</closed>
+        <won>false</won>
+        <forecastCategory>BestCase</forecastCategory>
+        <probability>60</probability>
+    </standardValue>
+    <standardValue>
+        <fullName>受注</fullName>
+        <default>false</default>
+        <label>受注</label>
+        <closed>true</closed>
+        <won>true</won>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+    </standardValue>
+    <standardValue>
+        <fullName>導入完了</fullName>
+        <default>false</default>
+        <label>導入完了</label>
+        <closed>true</closed>
+        <won>true</won>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
+    </standardValue>
+    <!-- ── LEMELLA_Wholesale 専用 ── -->
+    <standardValue>
+        <fullName>説明会案内</fullName>
+        <default>false</default>
+        <label>説明会案内</label>
+        <closed>false</closed>
+        <won>false</won>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>20</probability>
+    </standardValue>
+    <standardValue>
+        <fullName>説明会参加</fullName>
+        <default>false</default>
+        <label>説明会参加</label>
+        <closed>false</closed>
+        <won>false</won>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>30</probability>
+    </standardValue>
+    <!-- ── FLOWNEE_Consumer 専用 ── -->
+    <standardValue>
+        <fullName>案内</fullName>
+        <default>false</default>
+        <label>案内</label>
+        <closed>false</closed>
+        <won>false</won>
+        <forecastCategory>Pipeline</forecastCategory>
+        <probability>20</probability>
+    </standardValue>
+    <standardValue>
+        <fullName>購入済</fullName>
+        <default>false</default>
+        <label>購入済</label>
+        <closed>true</closed>
+        <won>true</won>
+        <forecastCategory>Closed</forecastCategory>
+        <probability>100</probability>
     </standardValue>
 </StandardValueSet>
