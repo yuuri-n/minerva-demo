@@ -1,0 +1,63 @@
+<template>
+    <lightning-card title="ブランドパイプライン" icon-name="custom:custom18">
+        <!-- タブバー -->
+        <div class="tab-bar slds-p-horizontal_medium slds-p-top_small" slot="header">
+            <template for:each={tabs} for:item="tab">
+                <button
+                    key={tab.value}
+                    class={tab.cssClass}
+                    data-value={tab.value}
+                    onclick={handleTabClick}>
+                    {tab.label}
+                    <template if:true={tab.count}>
+                        <span class="tab-count">{tab.count}</span>
+                    </template>
+                </button>
+            </template>
+        </div>
+
+        <div class="slds-p-around_small">
+            <!-- ローディング -->
+            <template if:true={isLoading}>
+                <div class="slds-align_absolute-center slds-p-around_large">
+                    <lightning-spinner alternative-text="読み込み中" size="medium"></lightning-spinner>
+                </div>
+            </template>
+
+            <!-- エラー -->
+            <template if:true={hasError}>
+                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                    <span class="slds-assistive-text">エラー</span>
+                    <h2>{errorMessage}</h2>
+                </div>
+            </template>
+
+            <!-- カンバンビュー（ブランドタブ） -->
+            <template if:true={isKanbanView}>
+                <c-kanban-board
+                    opportunities={opportunities}
+                    stages={activeStages}
+                    onstagechange={handleStageChange}>
+                </c-kanban-board>
+            </template>
+
+            <!-- テーブルビュー（すべてタブ） -->
+            <template if:true={isTableView}>
+                <template if:true={hasOpportunities}>
+                    <lightning-datatable
+                        key-field="id"
+                        data={tableData}
+                        columns={tableColumns}
+                        hide-checkbox-column
+                        resize-column-disabled>
+                    </lightning-datatable>
+                </template>
+                <template if:false={hasOpportunities}>
+                    <div class="slds-align_absolute-center slds-p-around_large slds-text-color_weak">
+                        商談がありません
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

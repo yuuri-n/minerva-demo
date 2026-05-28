@@ -1,0 +1,34 @@
+<template>
+    <div class="opp-card">
+        <!-- 商談名リンク -->
+        <div class="card-title">
+            <a href={oppUrl} target="_self" class="opp-name" title={oppName}>{oppName}</a>
+        </div>
+
+        <!-- 担当者 -->
+        <div class="card-row">
+            <lightning-icon icon-name="standard:user" size="x-small" class="row-icon"></lightning-icon>
+            <span class="row-text">{ownerName}</span>
+        </div>
+
+        <!-- 次回アクション日時（期限切れは赤表示） -->
+        <template if:true={hasNextAction}>
+            <div class={nextActionClass}>
+                <lightning-icon icon-name="utility:clock" size="x-small" class="row-icon"></lightning-icon>
+                <span class="row-text">{formattedNextAction}</span>
+            </div>
+        </template>
+
+        <!-- ステージ変更ドロップダウン -->
+        <div class="stage-select-wrap">
+            <lightning-combobox
+                name="stage"
+                label="ステージ"
+                variant="label-hidden"
+                value={currentStage}
+                options={stageOptions}
+                onchange={handleStageChange}>
+            </lightning-combobox>
+        </div>
+    </div>
+</template>

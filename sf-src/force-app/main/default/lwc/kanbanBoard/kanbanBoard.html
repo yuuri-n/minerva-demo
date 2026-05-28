@@ -1,0 +1,35 @@
+<template>
+    <div class="kanban-container">
+        <template for:each={stageColumns} for:item="col">
+            <div key={col.stageName} class="kanban-column">
+                <!-- 列ヘッダー -->
+                <div class="column-header">
+                    <span class="stage-label" title={col.stageName}>{col.stageName}</span>
+                    <span class="count-badge">{col.count}</span>
+                </div>
+                <!-- カード一覧 -->
+                <div class="column-body">
+                    <template for:each={col.cards} for:item="opp">
+                        <c-opportunity-card
+                            key={opp.Id}
+                            opportunity={opp}
+                            stages={stages}
+                            onstagechange={handleStageChange}>
+                        </c-opportunity-card>
+                    </template>
+                    <template if:false={col.hasCards}>
+                        <div class="empty-message">なし</div>
+                    </template>
+                </div>
+            </div>
+        </template>
+
+        <!-- 商談0件時 -->
+        <template if:true={isEmpty}>
+            <div class="slds-align_absolute-center slds-p-around_large slds-text-color_weak"
+                 style="width: 100%;">
+                このブランドの商談はありません
+            </div>
+        </template>
+    </div>
+</template>

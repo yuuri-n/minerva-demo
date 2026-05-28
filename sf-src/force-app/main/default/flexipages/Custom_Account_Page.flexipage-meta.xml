@@ -374,6 +374,17 @@
         <name>Facet-ddc3ca5d-05d9-4a7c-a9ff-d90b2c24d272</name>
         <type>Facet</type>
     </flexiPageRegions>
+    <!-- ブランドパイプライン タブ用 Facet -->
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>c:brandPipelineKanban</componentName>
+                <identifier>brandPipelineKanban_tab</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-brand-pipeline-body</name>
+        <type>Facet</type>
+    </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
@@ -405,6 +416,20 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab_related</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-brand-pipeline-body</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>ブランドパイプライン</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab_brand_pipeline</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-82409df2-7ce9-4f8e-8921-bb1dff1960cb</name>
