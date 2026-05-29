@@ -9,6 +9,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>LeadMigrationBatch</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>LeadMigrationBatchTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>OpportunityKanbanController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -20,6 +28,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.PrimaryEmail__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.MigrationDone__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
