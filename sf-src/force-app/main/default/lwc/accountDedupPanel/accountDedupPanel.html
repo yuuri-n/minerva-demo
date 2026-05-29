@@ -1,0 +1,47 @@
+<template>
+    <template if:true={showPanel}>
+        <div class="panel">
+            <template if:true={isLoading}>
+                <div class="spinner-wrap">
+                    <lightning-spinner alternative-text="重複チェック中" size="small"></lightning-spinner>
+                </div>
+            </template>
+            <template if:false={isLoading}>
+                <template if:true={error}>
+                    <p class="error-text">{error}</p>
+                </template>
+                <template if:true={hasDuplicates}>
+                    <div class="warning-header">
+                        <lightning-icon
+                            icon-name="utility:warning"
+                            variant="warning"
+                            size="x-small"
+                            class="warning-icon">
+                        </lightning-icon>
+                        <span class="warning-title">
+                            同一メールの取引先が {duplicateCount} 件あります
+                        </span>
+                    </div>
+                    <p class="dup-email">{duplicateEmail}</p>
+                    <template for:each={duplicates} for:item="dup">
+                        <div key={dup.accountId} class="dup-row">
+                            <div class="dup-info">
+                                <span class="dup-name">{dup.accountName}</span>
+                                <span class="dup-count">商談 {dup.oppCount} 件</span>
+                            </div>
+                            <button
+                                class="slds-button slds-button_brand"
+                                data-account-id={dup.accountId}
+                                onclick={handleMerge}>
+                                この取引先に統合
+                            </button>
+                        </div>
+                    </template>
+                    <p class="merge-note">
+                        ※ 統合すると、現在の取引先の商談がすべて選択した取引先に移動します
+                    </p>
+                </template>
+            </template>
+        </div>
+    </template>
+</template>

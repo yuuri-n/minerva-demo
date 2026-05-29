@@ -349,6 +349,12 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>c:accountDedupPanel</componentName>
+                <identifier>fl_accountDedupPanel</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>showLegacyActivityComposer</name>
                     <value>false</value>
