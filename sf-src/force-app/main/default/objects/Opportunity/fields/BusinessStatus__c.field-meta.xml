@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BusinessStatus__c</fullName>
+    <label>事業状況</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>false</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>エステサロン</fullName>
+                <default>false</default>
+                <label>エステサロン</label>
+            </value>
+            <value>
+                <fullName>クリニック</fullName>
+                <default>false</default>
+                <label>クリニック</label>
+            </value>
+            <value>
+                <fullName>開業前</fullName>
+                <default>false</default>
+                <label>開業前</label>
+            </value>
+            <value>
+                <fullName>その他</fullName>
+                <default>false</default>
+                <label>その他</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

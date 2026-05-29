@@ -241,16 +241,16 @@ public class LeadMigrationBatch implements Database.Batchable<SObject>, Database
             // Lead → Opportunity 既存同名フィールドの引き継ぎ
             LastApproachDate__c   = l.LastApproachDate__c,
             LastApproachMethod__c = l.LastApproachMethod__c,
-            LastApproachBy__c     = l.LastApproachBy__c
-            // NOTE: 以下の8項目は Step 3 で Opportunity 側にフィールド作成後に追加予定
-            // BusinessStatus__c    = l.BusinessStatus__c,
-            // InquiryCategory__c   = l.InquiryCategory__c,
-            // InquiryDate__c       = l.InquiryDate__c,
-            // InquiryExternalId__c = l.InquiryExternalId__c,
-            // InquiryMessage__c    = l.InquiryMessage__c,
-            // InquirySource__c     = l.InquirySource__c,
-            // ResponsePreference__c= l.ResponsePreference__c,
-            // ContactMethod__c     = l.ContactMethod__c
+            LastApproachBy__c     = l.LastApproachBy__c,
+            // Lead → Opportunity 新規追加 8項目の引き継ぎ (Step 3 で有効化)
+            BusinessStatus__c     = l.BusinessStatus__c,
+            InquiryCategory__c    = l.InquiryCategory__c,
+            InquiryDate__c        = l.InquiryDate__c,
+            InquiryExternalId__c  = l.InquiryExternalId__c,
+            InquiryMessage__c     = l.InquiryMessage__c,
+            InquirySource__c      = l.InquirySource__c,
+            ResponsePreference__c = l.ResponsePreference__c,
+            ContactMethod__c      = l.ContactMethod__c
         );
         return opp;
     }
