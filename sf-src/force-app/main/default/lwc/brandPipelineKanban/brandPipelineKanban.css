@@ -1,0 +1,30 @@
+.tab-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    border-bottom: 1px solid #dddbda;
+    padding-bottom: 8px;
+}
+
+.tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8125rem;
+    padding: 0 12px;
+    height: 28px;
+    border-radius: 4px;
+}
+
+.tab-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.35);
+    font-size: 0.6875rem;
+    font-weight: 700;
+}

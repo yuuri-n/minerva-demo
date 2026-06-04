@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Minerva_Consumer</fullName>
+    <active>true</active>
+    <businessProcess>Minerva_Consumer_Process</businessProcess>
+    <description>Minerva B2C/サロン会員 商談</description>
+    <label>Minerva（会員）</label>
+</RecordType>

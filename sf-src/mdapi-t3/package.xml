@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Minerva_Consumer_Process</members>
+        <members>LHALA_Wholesale_Process</members>
+        <members>LEMELLA_Wholesale_Process</members>
+        <members>FLOWNEE_Consumer_Process</members>
+        <name>BusinessProcess</name>
+    </types>
+    <version>66.0</version>
+</Package>

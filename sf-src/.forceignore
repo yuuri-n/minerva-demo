@@ -12,3 +12,11 @@ package.xml
 **/__tests__/**
 
 node_modules/
+
+# SalesProcess type not in SF CLI registry — deploy via SF Setup UI
+**/salesProcesses/**
+
+# Flows with pre-existing formula errors — excluded from CLI deploys
+force-app/main/default/flows/Lead_Reminder_Task.flow-meta.xml
+force-app/main/default/flows/Lead_To_Opportunity_Reminder.flow-meta.xml
+force-app/main/default/flows/Opportunity_Contract_Task.flow-meta.xml

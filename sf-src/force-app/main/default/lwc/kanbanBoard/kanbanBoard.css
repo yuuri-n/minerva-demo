@@ -1,0 +1,60 @@
+.kanban-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 4px 0 8px;
+    min-height: 300px;
+}
+
+.kanban-column {
+    flex: 0 0 200px;
+    min-width: 200px;
+    background-color: #f3f3f3;
+    border-radius: 6px;
+    padding: 8px;
+}
+
+.column-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    gap: 4px;
+}
+
+.stage-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #3e3e3c;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.count-badge {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    border-radius: 10px;
+    background: #0176d3;
+    color: #fff;
+    font-size: 0.6875rem;
+    font-weight: 700;
+}
+
+.column-body {
+    min-height: 60px;
+}
+
+.empty-message {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #a8a8a8;
+    padding: 12px 0;
+}

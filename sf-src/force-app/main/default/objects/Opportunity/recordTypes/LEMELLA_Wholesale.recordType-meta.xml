@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LEMELLA_Wholesale</fullName>
+    <active>true</active>
+    <businessProcess>LEMELLA_Wholesale_Process</businessProcess>
+    <description>LEMELLA B2Bサロン卸（説明会あり） 商談</description>
+    <label>LEMELLA（卸）</label>
+</RecordType>

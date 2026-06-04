@@ -12,14 +12,6 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>enableActionsInNative</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideChatterActions</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>3</value>
                 </componentInstanceProperties>
@@ -48,6 +40,7 @@
         <name>subheader</name>
         <type>Region</type>
     </flexiPageRegions>
+    <!-- 基本情報 左列 -->
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
@@ -56,62 +49,77 @@
                     <value>required</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Name</fieldItem>
-                <identifier>RecordNameField0L0</identifier>
+                <identifier>lh_Name_L0</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.ParentId</fieldItem>
-                <identifier>RecordParentIdField0L1</identifier>
+                <fieldItem>Record.AccountId</fieldItem>
+                <identifier>lh_AccountId_L1</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.Phone</fieldItem>
-                <identifier>RecordPhoneField0L2</identifier>
+                <fieldItem>Record.Brand__c</fieldItem>
+                <identifier>lh_Brand_L2</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.ID_Email__c</fieldItem>
-                <identifier>RecordID_Email__cField</identifier>
+                <fieldItem>Record.IS_Owner__c</fieldItem>
+                <identifier>lh_IS_Owner_L3</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.PrimaryEmail__c</fieldItem>
-                <identifier>RecordPrimaryEmail__cField</identifier>
+                <fieldItem>Record.AccountDivision__c</fieldItem>
+                <identifier>lh_AccountDivision_L4</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.kanaName__c</fieldItem>
-                <identifier>RecordkanaName__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-96239039-da54-4730-9e97-6dc1bd45569e</name>
+        <name>Facet-lh-basic-left</name>
         <type>Facet</type>
     </flexiPageRegions>
+    <!-- 基本情報 右列 -->
     <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Type</fieldItem>
-                <identifier>RecordTypeField0R0</identifier>
-            </fieldInstance>
-        </itemInstances>
         <itemInstances>
             <fieldInstance>
                 <fieldItem>Record.OwnerId</fieldItem>
-                <identifier>RecordOwnerIdField0R1</identifier>
+                <identifier>lh_Owner_R0</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.Website</fieldItem>
-                <identifier>RecordWebsiteField0R2</identifier>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>required</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.StageName</fieldItem>
+                <identifier>lh_Stage_R1</identifier>
             </fieldInstance>
         </itemInstances>
-        <name>Facet-eb3e8a3e-55eb-4955-ac67-cdd1ac0bab0b</name>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>required</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CloseDate</fieldItem>
+                <identifier>lh_CloseDate_R2</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Amount</fieldItem>
+                <identifier>lh_Amount_R3</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.LeadSource</fieldItem>
+                <identifier>lh_LeadSource_R4</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-lh-basic-right</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -119,55 +127,75 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-96239039-da54-4730-9e97-6dc1bd45569e</value>
+                    <value>Facet-lh-basic-left</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column_0_left</identifier>
+                <identifier>lh_col_basic_left</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-eb3e8a3e-55eb-4955-ac67-cdd1ac0bab0b</value>
+                    <value>Facet-lh-basic-right</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column_0_right</identifier>
+                <identifier>lh_col_basic_right</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-b5cd7bee-9df1-4f1e-8bb6-dc699cb7bf24</name>
+        <name>Facet-lh-basic-cols</name>
         <type>Facet</type>
     </flexiPageRegions>
+    <!-- 商談管理 左列 -->
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.Industry</fieldItem>
-                <identifier>RecordIndustryField1L0</identifier>
+                <fieldItem>Record.MeetingDateTime__c</fieldItem>
+                <identifier>lh_MeetingDT_L0</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.AccountSource</fieldItem>
-                <identifier>RecordAccountSourceField1L1</identifier>
+                <fieldItem>Record.NextMeetingDate__c</fieldItem>
+                <identifier>lh_NextMeetingDate_L1</identifier>
             </fieldInstance>
         </itemInstances>
-        <name>Facet-e7f41016-3dd5-459f-b422-03259d336880</name>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.NextActionDate__c</fieldItem>
+                <identifier>lh_NextActionDate_L2</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-lh-deal-left</name>
         <type>Facet</type>
     </flexiPageRegions>
+    <!-- 商談管理 右列 -->
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.NumberOfEmployees</fieldItem>
-                <identifier>RecordNumberOfEmployeesField1R0</identifier>
+                <fieldItem>Record.NextActionMethod__c</fieldItem>
+                <identifier>lh_NextActionMethod_R0</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.SicDesc</fieldItem>
-                <identifier>RecordSicDescField1R1</identifier>
+                <fieldItem>Record.LastApproachDate__c</fieldItem>
+                <identifier>lh_LastApproachDate_R1</identifier>
             </fieldInstance>
         </itemInstances>
-        <name>Facet-73dffe22-8992-4aa4-8bc1-f7c596e392fd</name>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.LastApproachMethod__c</fieldItem>
+                <identifier>lh_LastApproachMethod_R2</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.LastApproachBy__c</fieldItem>
+                <identifier>lh_LastApproachBy_R3</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-lh-deal-right</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -175,43 +203,44 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-e7f41016-3dd5-459f-b422-03259d336880</value>
+                    <value>Facet-lh-deal-left</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column_1_left</identifier>
+                <identifier>lh_col_deal_left</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-73dffe22-8992-4aa4-8bc1-f7c596e392fd</value>
+                    <value>Facet-lh-deal-right</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column_1_right</identifier>
+                <identifier>lh_col_deal_right</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-5312de77-0782-45d9-aae0-a17bf60ce503</name>
+        <name>Facet-lh-deal-cols</name>
         <type>Facet</type>
     </flexiPageRegions>
+    <!-- 詳細 -->
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
                 <fieldItem>Record.Description</fieldItem>
-                <identifier>RecordDescriptionField2L0</identifier>
+                <identifier>lh_Description_L0</identifier>
             </fieldInstance>
         </itemInstances>
-        <name>Facet-8de53336-4d24-49ac-bc7d-cfdd41bf4cfe</name>
+        <name>Facet-lh-detail-left</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentName>flexipage:blankSpace</componentName>
-                <identifier>blankSpace_right_2</identifier>
+                <identifier>lh_blank_detail_right</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-dfcc77ce-fd42-40b9-9dbd-65931614aa9f</name>
+        <name>Facet-lh-detail-right</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -219,87 +248,32 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-8de53336-4d24-49ac-bc7d-cfdd41bf4cfe</value>
+                    <value>Facet-lh-detail-left</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column_2_left</identifier>
+                <identifier>lh_col_detail_left</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-dfcc77ce-fd42-40b9-9dbd-65931614aa9f</value>
+                    <value>Facet-lh-detail-right</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column_2_right</identifier>
+                <identifier>lh_col_detail_right</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-51073034-75fd-4ab5-803c-3f46437f9dc0</name>
+        <name>Facet-lh-detail-cols</name>
         <type>Facet</type>
     </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.CSStatus__c</fieldItem>
-                <identifier>RecordCSStatusField3L0</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.LastCSContactDate__c</fieldItem>
-                <identifier>RecordLastCSContactDateField3L1</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-cs-info-left</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.CSOwner__c</fieldItem>
-                <identifier>RecordCSOwnerField3R0</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.ContractRenewalDate__c</fieldItem>
-                <identifier>RecordContractRenewalDateField3R1</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-cs-info-right</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-cs-info-left</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column_3_left</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-cs-info-right</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column_3_right</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-cs-info-columns</name>
-        <type>Facet</type>
-    </flexiPageRegions>
+    <!-- タブセット（詳細・関連） -->
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>columns</name>
-                    <value>Facet-b5cd7bee-9df1-4f1e-8bb6-dc699cb7bf24</value>
+                    <value>Facet-lh-basic-cols</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>horizontalAlignment</name>
@@ -310,14 +284,14 @@
                     <value>基本情報</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection_0</identifier>
+                <identifier>lh_section_basic</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>columns</name>
-                    <value>Facet-5312de77-0782-45d9-aae0-a17bf60ce503</value>
+                    <value>Facet-lh-deal-cols</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>horizontalAlignment</name>
@@ -325,17 +299,17 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
-                    <value>取引情報</value>
+                    <value>商談管理</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection_1</identifier>
+                <identifier>lh_section_deal</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>columns</name>
-                    <value>Facet-51073034-75fd-4ab5-803c-3f46437f9dc0</value>
+                    <value>Facet-lh-detail-cols</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>horizontalAlignment</name>
@@ -343,52 +317,17 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
-                    <value>その他</value>
+                    <value>詳細</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection_2</identifier>
+                <identifier>lh_section_detail</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-cs-info-columns</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>CS管理</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection_3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-db1baf70-4405-4336-8560-bb4461089839</name>
+        <name>Facet-lh-tab-detail</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentName>force:relatedListContainer</componentName>
-                <identifier>force_relatedListContainer</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-ddc3ca5d-05d9-4a7c-a9ff-d90b2c24d272</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <!-- ブランドパイプライン タブ用 Facet -->
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentName>c:brandPipelineKanban</componentName>
-                <identifier>brandPipelineKanban_tab</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-brand-pipeline-body</name>
+        <name>Facet-lh-tab-related</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -400,45 +339,31 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-db1baf70-4405-4336-8560-bb4461089839</value>
+                    <value>Facet-lh-tab-detail</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
                     <value>詳細</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab_detail</identifier>
+                <identifier>lh_tab_detail</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-ddc3ca5d-05d9-4a7c-a9ff-d90b2c24d272</value>
+                    <value>Facet-lh-tab-related</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
                     <value>Standard.Tab.relatedLists</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab_related</identifier>
+                <identifier>lh_tab_related</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-brand-pipeline-body</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>ブランドパイプライン</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab_brand_pipeline</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-82409df2-7ce9-4f8e-8921-bb1dff1960cb</name>
+        <name>Facet-lh-tabs</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -446,10 +371,10 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>tabs</name>
-                    <value>Facet-82409df2-7ce9-4f8e-8921-bb1dff1960cb</value>
+                    <value>Facet-lh-tabs</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
-                <identifier>flexipage_tabset</identifier>
+                <identifier>lh_tabset</identifier>
             </componentInstance>
         </itemInstances>
         <name>main</name>
@@ -458,19 +383,25 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>c:accountDedupPanel</componentName>
+                <identifier>lh_accountDedupPanel</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>showLegacyActivityComposer</name>
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentName>runtime_sales_activities:activityPanel</componentName>
-                <identifier>runtime_sales_activities_activityPanel</identifier>
+                <identifier>lh_activityPanel</identifier>
             </componentInstance>
         </itemInstances>
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>Custom Account Page</masterLabel>
-    <sobjectType>Account</sobjectType>
+    <masterLabel>LHALA（卸）商談ページ</masterLabel>
+    <sobjectType>Opportunity</sobjectType>
     <template>
         <name>flexipage:recordHomeWithSubheaderTemplateDesktop</name>
         <properties>

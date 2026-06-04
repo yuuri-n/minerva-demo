@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SalesProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Minerva_Consumer_Process</fullName>
+    <description>Minerva B2C/サロン会員 商談プロセス</description>
+    <isActive>true</isActive>
+    <opportunityStages>未コンタクト</opportunityStages>
+    <opportunityStages>新規会員登録</opportunityStages>
+    <opportunityStages>アプローチ</opportunityStages>
+    <opportunityStages>相談</opportunityStages>
+    <opportunityStages>提案</opportunityStages>
+    <opportunityStages>受注_購入済</opportunityStages>
+    <opportunityStages>リピート</opportunityStages>
+    <opportunityStages>NG</opportunityStages>
+</SalesProcess>

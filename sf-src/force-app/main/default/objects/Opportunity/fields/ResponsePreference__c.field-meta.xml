@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ResponsePreference__c</fullName>
+    <label>対応希望</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>false</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>電話</fullName>
+                <default>false</default>
+                <label>電話</label>
+            </value>
+            <value>
+                <fullName>メール</fullName>
+                <default>false</default>
+                <label>メール</label>
+            </value>
+            <value>
+                <fullName>資料請求のみ希望</fullName>
+                <default>false</default>
+                <label>資料請求のみ希望</label>
+            </value>
+            <value>
+                <fullName>その他</fullName>
+                <default>false</default>
+                <label>その他</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

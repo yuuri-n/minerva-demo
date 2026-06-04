@@ -1,0 +1,44 @@
+<!--
+  LEMELLA LP 資料請求フォーム - Web-to-Lead
+  -----------------------------------------------
+  設置場所: WordPress 固定ページ（資料請求ページ）
+  Salesforce org: ruby-ability-3318.my.salesforce.com
+  LeadSource: LP Resource Request（LP資料請求）
+
+  導入手順:
+  1. SF Setup → 機能設定 → マーケティング → Web-to-Lead → 有効化
+  2. このフォームをWordPressの固定ページに貼り付け
+  3. retURL を送信後のサンクスページURLに変更
+-->
+<form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+
+  <!-- Salesforce 設定（変更不要） -->
+  <input type="hidden" name="oid" value="00Dd500000DXTbdEAH">
+  <input type="hidden" name="retURL" value="https://lemellajapan.com/lp-salon/contact/?thanks=1">
+  <input type="hidden" name="lead_source" value="LP Resource Request">
+
+  <div>
+    <label for="last_name">お名前 <span>*</span></label>
+    <input id="last_name" maxlength="80" name="last_name" type="text" required placeholder="例：山田 太郎" />
+  </div>
+
+  <div>
+    <label for="company">サロン名 / 会社名 <span>*</span></label>
+    <input id="company" maxlength="40" name="company" type="text" required placeholder="例：株式会社〇〇" />
+  </div>
+
+  <div>
+    <label for="email">メールアドレス <span>*</span></label>
+    <input id="email" maxlength="80" name="email" type="email" required placeholder="例：sample@example.com" />
+  </div>
+
+  <div>
+    <label for="phone">電話番号</label>
+    <input id="phone" maxlength="40" name="phone" type="tel" placeholder="例：090-0000-0000" />
+  </div>
+
+  <div>
+    <input type="submit" value="資料請求する">
+  </div>
+
+</form>
