@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Call</fullName>
+        <default>false</default>
+        <label>架電</label>
+    </standardValue>
+    <standardValue>
+        <fullName>LINE連絡</fullName>
+        <default>false</default>
+        <label>LINE連絡</label>
+    </standardValue>
+    <standardValue>
+        <fullName>メール送信</fullName>
+        <default>false</default>
+        <label>メール送信</label>
+    </standardValue>
+    <standardValue>
+        <fullName>SMS送信</fullName>
+        <default>false</default>
+        <label>SMS送信</label>
+    </standardValue>
+    <standardValue>
+        <fullName>DM送信</fullName>
+        <default>false</default>
+        <label>DM送信</label>
+    </standardValue>
+    <standardValue>
+        <fullName>商談訪問</fullName>
+        <default>false</default>
+        <label>商談訪問</label>
+    </standardValue>
+    <standardValue>
+        <fullName>フォローアップ</fullName>
+        <default>false</default>
+        <label>フォローアップ</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Send Letter</fullName>
+        <default>false</default>
+        <label>書面送付</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Send Quote</fullName>
+        <default>false</default>
+        <label>見積送付</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>その他</label>
+    </standardValue>
+</StandardValueSet>
